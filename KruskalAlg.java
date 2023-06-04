@@ -67,40 +67,22 @@ public class KruskalAlg extends MSTAlgorithm {
 
     public void union(Vertex[] x, Vertex A, Vertex B) {
 
-        int AR = x[A.label].label;
-        int BR = x[B.label].label;
-        boolean ANR = findSet(A.label, AR);
-        boolean BNR = findSet(B.label, BR);
+        int Al = x[A.label].label;
+        int Bl = x[B.label].label;
 
+        int max = Math.max(Al, Bl);
+        int min = Math.min(Al, Bl);
         for (int i = 0; i < x.length; i++) {
-            if (AR == x[i].label && (i != A.label)) {
-                ANR = false;
-            }
-            if (BR == x[i].label && (i != B.label)) {
-                BNR = false;
-            }
-        }
-        if ((!ANR) && (BNR)) {
-            x[B.label] = x[A.label];
-        } else if (ANR && (!BNR)) {
-            x[A.label] = x[B.label];
-        } else if ((ANR && BNR)) {
-            x[B.label] = x[A.label];
-        } else {
-            int max = Math.max(AR, BR);
-            int min = Math.min(AR, BR);
-            for (int i = 0; i < x.length; i++) {
-                if (x[i].label == max) {
-                    x[i] = x[min];
-                }
+            if (x[i].label == max) {
+                x[i] = x[min];
             }
         }
     }
 
-    public void makeSet(Vertex[] DS) {
-        for (int i = 0; i < DS.length; i++) {
+    public void makeSet(Vertex[] x) {
+        for (int i = 0; i < x.length; i++) {
             Vertex v = new Vertex(i);
-            DS[i] = v;
+            x[i] = v;
         }
     }
 

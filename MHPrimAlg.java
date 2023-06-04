@@ -32,7 +32,6 @@ public class MHPrimAlg extends MSTAlgorithm {
             e.displayInfo();
             System.out.println();
         }
-        System.out.println("The cost of designed phone network: " + this.cost);
     }
 
     @Override
